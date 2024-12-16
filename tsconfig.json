@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                  // Output JavaScript version
+    "module": "CommonJS",             // Module system
+    "declaration": true,              // Generate .d.ts files
+    "outDir": "dist",                 // Output directory
+    "strict": true,                   // Enable strict type checking
+    "esModuleInterop": true,          // Allow default imports from CommonJS modules
+    "skipLibCheck": true,             // Skip checking of .d.ts files
+    "moduleResolution": "node",       // Resolve modules the Node.js way
+    "baseUrl": ".",                   // Base directory for module resolution
+    "paths": { "*": ["src/*"] }       // Path mapping for imports
+  },
+  "include": ["src/**/*"],            // Include TypeScript files
+  "exclude": ["node_modules", "dist"] // Exclude specific directories
+}

@@ -2,8 +2,11 @@
   "name": "system-analytic-log",
   "version": "1.0.0",
   "description": "A client gate of the kakaprodo/system-analytic package that collect analytics and send them to the server.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,5 +16,12 @@
     "analytic-collection"
   ],
   "author": "kakaprodo",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@thumbmarkjs/thumbmarkjs": "^0.16.1"
+  }
 }
