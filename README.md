@@ -164,3 +164,11 @@ Remember the attribute prefix that we are using is set to `attributePrefix: "dat
     View Product
 </button>
 ```
+
+## License
+
+This project is licensed under the ISC License.
+
+## Additional Resources
+
+-   [kakaprodo/system-analytic](https://yupidoc.com/projects/system-analytic/preview) : the php-laravel package that works with this Js package
