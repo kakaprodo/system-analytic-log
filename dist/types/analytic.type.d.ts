@@ -50,7 +50,7 @@ export type HtmlDomSettings = {
     attributePrefix?: string;
     /**
      * When true, every single log defined on html tag will trigger a submission
-     * even otherwise logs will be collected and subimitted after some period
+     * otherwise logs will be collected and subimitted after some period
      */
     singleSubmission?: boolean;
 };
