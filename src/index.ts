@@ -20,11 +20,11 @@ const listenToAnalyticDomEvents = (settings : HtmlDomSettings) => {
     const shouldSubmit = settings.singleSubmission ?? true;
 
     const elements = document.querySelectorAll(`[${prefix}-event]`);
-
+  
     elements.forEach((element) => {
         const eventValue = element.getAttribute(`${prefix}-event`);
-
-        element.addEventListener(eventValue as keyof ElementEventMap, () => {
+        const htmlTag = eventValue === 'DOMContentLoaded'? document: element;
+        htmlTag.addEventListener(eventValue as keyof ElementEventMap, () => {
             const tenantId = element.getAttribute(`${prefix}-tenant`);
             const tag = element.getAttribute(`${prefix}-tag`) as string;
             const action = element.getAttribute(`${prefix}-action`) ?? eventValue;
