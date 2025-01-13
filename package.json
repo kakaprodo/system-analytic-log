@@ -1,6 +1,6 @@
 {
   "name": "system-analytic-log",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A client gate of the kakaprodo/system-analytic package that collect analytics and send them to the server.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "anlytics",
+    "analytics",
     "system-analytic",
     "analytic-log",
     "analytic-collection"

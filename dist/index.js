@@ -30,7 +30,8 @@ const listenToAnalyticDomEvents = (settings) => {
     const elements = document.querySelectorAll(`[${prefix}-event]`);
     elements.forEach((element) => {
         const eventValue = element.getAttribute(`${prefix}-event`);
-        element.addEventListener(eventValue, () => {
+        const htmlTag = eventValue === 'DOMContentLoaded' ? document : element;
+        htmlTag.addEventListener(eventValue, () => {
             var _a, _b, _c, _d;
             const tenantId = element.getAttribute(`${prefix}-tenant`);
             const tag = element.getAttribute(`${prefix}-tag`);
