@@ -1,5 +1,5 @@
 import { Log } from "./core/log";
-import { AnalyticDuplicateAfter, HtmlDomSettings, LogItem, MainSetupOption } from "./types/analytic.type";
+import { AnalyticDuplicateAfter, HtmlDomSettings, LogItem, LogItemHandlerTypes, MainSetupOption } from "./types/analytic.type";
 
 /**
  * Make the Log gate available on the window
@@ -32,6 +32,7 @@ const listenToAnalyticDomEvents = (settings : HtmlDomSettings) => {
             const value = element.getAttribute(`${prefix}-value`) ?? '1';
             const duplicate_after = (element.getAttribute(`${prefix}-duplicate`) ?? 'never') as AnalyticDuplicateAfter;
             const directSubmit = Number(element.getAttribute(`${prefix}-direct`) ?? '1') !== 0;
+            const handler_type = (element.getAttribute(`${prefix}-handler`) ?? 'all') as LogItemHandlerTypes;
 
             (shouldSubmit && directSubmit ? sendLog : addLog)({
                 tenant_id: tenantId as string,
@@ -39,7 +40,8 @@ const listenToAnalyticDomEvents = (settings : HtmlDomSettings) => {
                 action,
                 group,
                 value: Number(value),
-                duplicate_after
+                duplicate_after,
+                handler_type,
             });
         });
     });

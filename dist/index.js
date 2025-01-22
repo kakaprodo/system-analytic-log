@@ -32,7 +32,7 @@ const listenToAnalyticDomEvents = (settings) => {
         const eventValue = element.getAttribute(`${prefix}-event`);
         const htmlTag = eventValue === 'DOMContentLoaded' ? document : element;
         htmlTag.addEventListener(eventValue, () => {
-            var _a, _b, _c, _d;
+            var _a, _b, _c, _d, _e;
             const tenantId = element.getAttribute(`${prefix}-tenant`);
             const tag = element.getAttribute(`${prefix}-tag`);
             const action = (_a = element.getAttribute(`${prefix}-action`)) !== null && _a !== void 0 ? _a : eventValue;
@@ -40,13 +40,15 @@ const listenToAnalyticDomEvents = (settings) => {
             const value = (_b = element.getAttribute(`${prefix}-value`)) !== null && _b !== void 0 ? _b : '1';
             const duplicate_after = ((_c = element.getAttribute(`${prefix}-duplicate`)) !== null && _c !== void 0 ? _c : 'never');
             const directSubmit = Number((_d = element.getAttribute(`${prefix}-direct`)) !== null && _d !== void 0 ? _d : '1') !== 0;
+            const handler_type = ((_e = element.getAttribute(`${prefix}-handler`)) !== null && _e !== void 0 ? _e : 'all');
             (shouldSubmit && directSubmit ? exports.sendLog : exports.addLog)({
                 tenant_id: tenantId,
                 tag,
                 action,
                 group,
                 value: Number(value),
-                duplicate_after
+                duplicate_after,
+                handler_type,
             });
         });
     });
