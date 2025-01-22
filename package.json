@@ -1,6 +1,6 @@
 {
   "name": "system-analytic-log",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A client gate of the kakaprodo/system-analytic package that collect analytics and send them to the server.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
