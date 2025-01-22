@@ -90,8 +90,6 @@ class BaseLog {
                 data = this.uniquefyLogs(data);
                 if (data.length === 0)
                     return;
-                console.log(data);
-                return;
             }
             fetch(url, {
                 method: 'POST',
