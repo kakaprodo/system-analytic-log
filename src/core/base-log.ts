@@ -98,7 +98,13 @@ export class BaseLog {
                 ...log,
                 identifier: this.browserId as string,
             }));
+            data = this.uniquefyLogs(data);
+
+            if (data.length === 0) return;
+            console.log(data);
+            return;
         }
+
 
         fetch(url, {
             method: 'POST',
@@ -127,5 +133,17 @@ export class BaseLog {
         const logs = sessionStorage.getItem(`${this.tenant_id}-${logStorageKeyName}`);
 
         return logs === null ? [] : JSON.parse(logs as string);
+    }
+
+    uniquefyLogs(logs: LogItem[]): LogItem[] {
+        const seen = new Set<string>();
+        return logs.filter(log => {
+            const serialized = JSON.stringify(log);
+            if (seen.has(serialized)) {
+            return false;
+            }
+            seen.add(serialized);
+            return true;
+        });
     }
 }

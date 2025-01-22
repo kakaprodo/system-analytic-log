@@ -8,7 +8,8 @@ export type AnalyticDuplicateAfter =
   | 'year'
   | 'never'
   | 'every';
-
+  
+export type LogItemHandlerTypes = 'bar-chart' | 'pie-chart' | 'card' | 'list' | 'all';
 
 export type LogItem = {
     /**
@@ -30,6 +31,11 @@ export type LogItem = {
      * the category of the log
      */
     group?: string | null;
+
+    /**
+     * the category of the log
+     */
+    handler_type?: LogItemHandlerTypes | null;
     
     value?: number; // default 1
     identifier?: string | null; // browser agent

@@ -1,4 +1,5 @@
 export type AnalyticDuplicateAfter = 'minute' | 'hour' | 'day' | 'week' | 'month' | 'year' | 'never' | 'every';
+export type LogItemHandlerTypes = 'bar-chart' | 'pie-chart' | 'card' | 'list' | 'all';
 export type LogItem = {
     /**
      * to whom the log is for, `system` will be the default
@@ -16,6 +17,10 @@ export type LogItem = {
      * the category of the log
      */
     group?: string | null;
+    /**
+     * the category of the log
+     */
+    handler_type?: LogItemHandlerTypes | null;
     value?: number;
     identifier?: string | null;
     payload?: object;

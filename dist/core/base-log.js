@@ -87,6 +87,11 @@ class BaseLog {
             }
             else {
                 data = data.map(log => (Object.assign(Object.assign({}, log), { identifier: this.browserId })));
+                data = this.uniquefyLogs(data);
+                if (data.length === 0)
+                    return;
+                console.log(data);
+                return;
             }
             fetch(url, {
                 method: 'POST',
@@ -109,6 +114,17 @@ class BaseLog {
     getPersistedLogs() {
         const logs = sessionStorage.getItem(`${this.tenant_id}-${logStorageKeyName}`);
         return logs === null ? [] : JSON.parse(logs);
+    }
+    uniquefyLogs(logs) {
+        const seen = new Set();
+        return logs.filter(log => {
+            const serialized = JSON.stringify(log);
+            if (seen.has(serialized)) {
+                return false;
+            }
+            seen.add(serialized);
+            return true;
+        });
     }
 }
 exports.BaseLog = BaseLog;

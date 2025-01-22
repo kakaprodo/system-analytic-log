@@ -75,6 +75,7 @@ sendLog({
 | `duplicate_after` | Determines how frequently duplicate logs for the same `tag` and `action` can be recorded. | `'minute' \| 'hour' \| 'day' \| 'week' \| 'month' \| 'year' \| 'never' \| 'every'` | `'never'` | No       | `"hour"`                              |
 | `payload`         | An object containing additional data about the log. Can include any key-value pairs.      | `object`                                                                           | `{}`      | No       | `{ color: "yellow", size: "medium" }` |
 | `value`           | A numeric value associated with the log, useful for analytics calculations.               | `number`                                                                           | `1`       | No       | `5`                                   |
+| `handler_type`    | Helps to define the type of analytic handler the log should be displayed on               | `'bar-chart' \| 'pie-chart' \| 'card' \| 'list' \| 'all'`                          | `all`     | No       | `"pie-chart"`                         |
 
 1. **`tag`**
 
@@ -148,6 +149,7 @@ Here is the list of tag `suffix` supported by this package:
 -   `value`
 -   `duplicate` : same functionality as `duplicate_after`
 -   `direct` : can be `0` or `1`. its value will overide the `singleSubmission` setting.
+-   `handler`: same functionality as `handler_type`
 
 #### Example of using HTML DOM
 

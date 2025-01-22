@@ -26,4 +26,5 @@ export declare class BaseLog {
     dispatchToServer(data: LogItem | LogItem[]): Promise<void>;
     persistLogs(): void;
     getPersistedLogs(): LogItem[];
+    uniquefyLogs(logs: LogItem[]): LogItem[];
 }
