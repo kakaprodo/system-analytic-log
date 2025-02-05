@@ -38,3 +38,5 @@ jest.config.js
 .npmrc
 
 package-lock.json
+
+doc
