@@ -11,6 +11,7 @@ export declare class BaseLog {
         onSubmitSucceeded: (value?: any) => void;
         onSubmitFailed: (value?: any) => void;
         htmlDomSettings?: import("types/analytic.type").HtmlDomSettings;
+        showInConsole?: boolean;
     };
     submitAfter: number;
     constructor({ tenant_id, backendUrl, requestHeaders, singleLogEndpoint, manyLogEndpoint, submitAfter, ...eventOptions }: MainSetupOption);
@@ -27,4 +28,6 @@ export declare class BaseLog {
     persistLogs(): void;
     getPersistedLogs(): LogItem[];
     uniquefyLogs(logs: LogItem[]): LogItem[];
+    displayInConsole(log: LogItem): void;
+    displaySubmittedLogsInConsole(logs: LogItem[] | LogItem): void;
 }

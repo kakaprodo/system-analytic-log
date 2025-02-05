@@ -61,8 +61,6 @@ export class BaseLog {
         this.logs = [];
 
         this.persistLogs();
-
-        this.initCountDownSubmitter();
     }
 
     async submit(log: LogItem) {
@@ -74,7 +72,7 @@ export class BaseLog {
      * after a given number or period
      */
     async initCountDownSubmitter() {
-        setTimeout(() => this.submitMany(), this.submitAfter);
+        setInterval(() => this.submitMany(), this.submitAfter);
     }
 
     async dispatchToServer(data: LogItem | LogItem[]) {
@@ -103,6 +101,7 @@ export class BaseLog {
             if (data.length === 0) return;
         }
 
+        this.displaySubmittedLogsInConsole(data);
 
         fetch(url, {
             method: 'POST',
@@ -143,5 +142,16 @@ export class BaseLog {
             seen.add(serialized);
             return true;
         });
+    }
+
+    displayInConsole(log: LogItem) {
+        if (!this.eventOptions.showInConsole) return;
+        console.log(log);
+    }
+
+    displaySubmittedLogsInConsole(logs: LogItem[] | LogItem) {
+        if (!this.eventOptions.showInConsole) return;
+        console.log('\n***** SUBMITTED LOGS  ****\n');
+        console.table ? console.table(logs) : console.log(logs);
     }
 }

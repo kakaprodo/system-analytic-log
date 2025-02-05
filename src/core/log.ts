@@ -18,6 +18,8 @@ export class Log extends BaseLog {
             throw new Error("The 'tag' value is required.");
         }
 
+        this.displayInConsole(log);
+
         this.logs.push(this.formatLog(log));
 
         this.persistLogs();
@@ -31,6 +33,8 @@ export class Log extends BaseLog {
      * submit single log to the server
      */
     async send(log: LogItem) {
+        this.displayInConsole(log);
+        
         this.submit(await this.formatLog(log))
     }
 }

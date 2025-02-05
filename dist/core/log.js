@@ -25,6 +25,7 @@ class Log extends base_log_1.BaseLog {
         if (!log.tag) {
             throw new Error("The 'tag' value is required.");
         }
+        this.displayInConsole(log);
         this.logs.push(this.formatLog(log));
         this.persistLogs();
         if (this.logs.length === 5)
@@ -36,6 +37,7 @@ class Log extends base_log_1.BaseLog {
      */
     send(log) {
         return __awaiter(this, void 0, void 0, function* () {
+            this.displayInConsole(log);
             this.submit(yield this.formatLog(log));
         });
     }

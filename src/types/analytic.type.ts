@@ -70,6 +70,12 @@ export type MainSetupOption = {
     onSubmitFailed: (value?: any) => void;
     
     htmlDomSettings?: HtmlDomSettings;
+
+    /**
+     * When true, any collected log will be displayed in 
+     * the console
+     */
+    showInConsole?: boolean;
 }
 
 export type HtmlDomSettings = {

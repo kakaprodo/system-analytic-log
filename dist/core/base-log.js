@@ -59,7 +59,6 @@ class BaseLog {
             yield this.dispatchToServer(this.logs);
             this.logs = [];
             this.persistLogs();
-            this.initCountDownSubmitter();
         });
     }
     submit(log) {
@@ -73,7 +72,7 @@ class BaseLog {
      */
     initCountDownSubmitter() {
         return __awaiter(this, void 0, void 0, function* () {
-            setTimeout(() => this.submitMany(), this.submitAfter);
+            setInterval(() => this.submitMany(), this.submitAfter);
         });
     }
     dispatchToServer(data) {
@@ -91,6 +90,7 @@ class BaseLog {
                 if (data.length === 0)
                     return;
             }
+            this.displaySubmittedLogsInConsole(data);
             fetch(url, {
                 method: 'POST',
                 headers: Object.assign({ 'Accept': 'application/json', 'Content-Type': 'application/json' }, this.requestHeaders),
@@ -123,6 +123,17 @@ class BaseLog {
             seen.add(serialized);
             return true;
         });
+    }
+    displayInConsole(log) {
+        if (!this.eventOptions.showInConsole)
+            return;
+        console.log(log);
+    }
+    displaySubmittedLogsInConsole(logs) {
+        if (!this.eventOptions.showInConsole)
+            return;
+        console.log('\n***** SUBMITTED LOGS  ****\n');
+        console.table ? console.table(logs) : console.log(logs);
     }
 }
 exports.BaseLog = BaseLog;
